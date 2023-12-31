@@ -23,4 +23,4 @@ Route::get('/', function () {
 
 Route::get('blog',[AdminController::class,'index'])->name('blog');
 Route::get('change/{id}',[AdminController::class,'changes'])->name('changess');
-// Route::get('status',[AdminController::class,'index'])->name('status');
+//ทดสอบ Pull
