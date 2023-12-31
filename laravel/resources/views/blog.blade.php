@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Blog Table CRUD</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
@@ -12,7 +12,7 @@
 
 <div class="container">
 
-
+<h1>Blog</h1>
 
 
 <table class="table">
@@ -20,7 +20,7 @@
     <tr>
       <th scope="col">ID</th>
       <th scope="col">title</th>
-      <th scope="col">content</th>
+      <!-- <th scope="col">content</th> -->
       <th scope="col">status</th>
 
     </tr>
@@ -28,19 +28,19 @@
 
   @foreach ($blogs as $item)
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td> {{$item["title"]}} </td>
-      <td> {{$item["content"]}} </td>
-      <td>
-        @if ($item["status"] == true)
-           <a href="" class="btn btn-success">เผยเเพร่</a> 
-        @else
-             <a href="" class="btn btn-dark">ฉบับร่าง</a>
-        @endif
-      </td>
-    
-    </tr>
+        <tr>
+        <th scope="row">1</th>
+            <td> {{$item->title}} </td>
+            <!-- <td> {{  Str::limit ($item->content,10) }} </td> จำกัดแสดงผลตัวอักษร -->
+
+            <td> <!--เชค สถานะ 0 หรือ 1 เพื่อเปลี่ยนสีปุ่ม -->
+                @if ($item->status == true)
+                    <a href="{{ route ('changess' , $item->id) }}" class="btn btn-success">เผยเเพร่</a> 
+                @else
+                    <a href="{{ route ('changess' , $item->id) }}" class="btn btn-dark">ฉบับร่าง</a>
+                @endif
+            </td>
+        </tr>
   @endforeach
   </tbody>
 </table>
